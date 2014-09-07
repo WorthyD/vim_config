@@ -1,4 +1,26 @@
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=$VIMRUNTIME/../vimfiles/bundle/Vundle.vim/
+let path='$VIMRUNTIME/../vimfiles/bundle'
+call vundle#begin(path)
+"call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+"Less Syntax Highlighiting
+Bundle 'genoma/vim-less'
+"html5 indent and syntax
+Plugin 'othree/html5.vim'
+
+"JS Beutify
+Bundle 'maksimr/vim-jsbeautify'
+
+" All of your Plugins must be added before the following line
+call vundle#end()     
+
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -28,6 +50,13 @@ set wildmenu
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
+"CSS Tidy
+"autocmd filetype css setlocal equalprg=csstidy\ -\ --silent=true\ --template=curl.tpl\ \|\ dos2unix
+
+".vimrc
+  autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+  autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+  autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 " Make sure that unsaved buffers that are to be put in the background are 
 " allowed to go in there (ie. the "must save first" error doesn't come up)
@@ -112,6 +141,9 @@ autocmd BufEnter *.ascx set filetype=html
 autocmd BufEnter *.jsp set filetype=html
 
 color vs2010 "Sets default Color
+"syntax enable
+"set background=dark
+"colorscheme solarized
 
 "autocmd VimEnter * IndentGuidesToggle
 autocmd VimEnter * IndentGuidesEnable

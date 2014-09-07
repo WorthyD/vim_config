@@ -19,7 +19,8 @@ let colors_name = "putty2"
 
 hi Normal 			guifg=#c8c8c8   guibg=#1e1e1e
 hi Cursor           guifg=NONE      guibg=#004080
-hi CursorLine      	guifg=NONE                guibg=#0f0f0f
+hi CursorLine      	guifg=NONE      guibg=#0f0f0f
+
 hi Character        guifg=#ff0000
 hi Comment         	guifg=#608B4E 
 hi Conditional      guifg=#569CD7
@@ -34,7 +35,16 @@ hi Float            guifg=#ff0000
 hi FoldColumn 		guibg=#808080   guifg=#00008B	
 hi Folded 			guifg=#00008B   guibg=#ffffff	
 hi Function         guifg=#569CD7
-hi Identifier      	guifg=#c8c8c8   
+
+
+hi htmlTag            guifg=#68685B gui=NONE 
+hi htmlSpecialTagName guifg=#569cd6 gui=NONE 
+hi htmlTagName        guifg=#569cd6 gui=NONE  
+hi htmlEndTag         guifg=#68685B gui=NONE
+hi htmlArg              guifg=#9CDCFE
+"hi javaScript       guifg=#ff0000
+
+hi Identifier      	guifg=#9CDCFE   "guifg=#c8c8c8   
 hi IncSearch 		guifg=fg        guibg=bg        gui=reverse			            
 hi Keyword         	guifg=#569CD7 
 hi LineNr          	guifg=#2B91AF
@@ -46,7 +56,7 @@ hi Special 			guifg=#569CD7
 hi SpecialKey 		guifg=#0000ff
 hi Statement 		guifg=#569CD7 	
 hi StatusLine 		guifg=fg        guibg=bg        gui=reverse     
-hi String           guifg=#D69D85
+hi String           guifg=#D69D85                           
 hi Tag              guifg=#ff0000
 hi Title            guifg=#c8c8c8
 hi Todo             guifg=#00ff00   guibg=#000000
