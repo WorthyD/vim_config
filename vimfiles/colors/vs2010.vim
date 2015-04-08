@@ -45,13 +45,13 @@ hi htmlArg              guifg=#9CDCFE
 "hi javaScript       guifg=#ff0000
 
 hi Identifier      	guifg=#9CDCFE   "guifg=#c8c8c8   
-hi IncSearch 		guifg=fg        guibg=bg        gui=reverse			            
+"hi IncSearch 		guifg=fg        guibg=bg        gui=reverse			            
 hi Keyword         	guifg=#569CD7 
 hi LineNr          	guifg=#2B91AF
 hi MatchParen	  	guifg=fg        guibg=#1b1b1b    term=reverse
 hi Number          	guifg=#B5CEA8
 hi Operator        	guifg=#9B9B9B
-hi Search 			guifg=NONE	    guibg=#DDDD00	
+hi Search 			guifg=#000000	    guibg=#569CD7	
 hi Special 			guifg=#569CD7   
 hi SpecialKey 		guifg=#0000ff
 hi Statement 		guifg=#569CD7 	
@@ -62,7 +62,7 @@ hi Title            guifg=#c8c8c8
 hi Todo             guifg=#00ff00   guibg=#000000
 hi Type             guifg=#9CDCFE
 hi Underlined       guifg=#569CD7   guibg=bg        gui=underline  
-
+hi Visual              guibg=#004080   gui=none
 
 
 

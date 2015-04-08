@@ -14,6 +14,9 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'genoma/vim-less'
 "html5 indent and syntax
 Plugin 'othree/html5.vim'
+Plugin 'elzr/vim-json'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 "JS Beutify
 Bundle 'maksimr/vim-jsbeautify'
@@ -27,7 +30,7 @@ behave mswin
 
 set nobackup	"Prevents creation of new files
 
-set guifont=Courier_New:h10 
+set guifont=Consolas:h12
 
 set nu!		"sets Line numbers
 set wrap!	"Word wrap
@@ -37,6 +40,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 filetype indent on
+set cursorline
 
 
 
@@ -131,6 +135,9 @@ set scrolloff=8
 " Make command line two lines high
 set ch=2
 
+"Allows for multiple pasting
+xnoremap p pgvy
+
 "autocmd VimEnter * NERDTree
 
 "autocmd VimEnter * wincmd p
@@ -139,6 +146,7 @@ autocmd BufEnter *.cshtml set filetype=html
 autocmd BufEnter *.aspx set filetype=html
 autocmd BufEnter *.ascx set filetype=html
 autocmd BufEnter *.jsp set filetype=html
+au! BufRead,BufNewFile *.json set filetype=json
 
 color vs2010 "Sets default Color
 "syntax enable
@@ -152,6 +160,7 @@ let g:indent_guides_start_level=2
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+let g:vim_markdown_folding_disabled=1
 
 
 "-----------------------------------------------------------------------------
@@ -208,4 +217,15 @@ function! FixChars()
 :%s/—/-/g
 endfunction
 
+function! Formatjson()
+:%!python -m json.tool
+endfunction
 
+augroup json_autocmd
+  autocmd!
+  autocmd FileType json set autoindent
+  autocmd FileType json set formatoptions=tcq2l
+  autocmd FileType json set textwidth=78 shiftwidth=2
+  autocmd FileType json set softtabstop=2 tabstop=8
+  autocmd FileType json set expandtab
+augroup END
