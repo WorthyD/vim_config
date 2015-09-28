@@ -162,7 +162,8 @@ let g:indent_guides_start_level=2
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 let g:vim_markdown_folding_disabled=1
 
-
+:imap jj <Esc>
+:imap `` <Esc>
 "-----------------------------------------------------------------------------
 " NERD Tree Plugin Settings
 "-----------------------------------------------------------------------------
