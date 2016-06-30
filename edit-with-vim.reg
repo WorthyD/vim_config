@@ -3,3 +3,6 @@ REGEDIT4
 @="Edit with &Vim"
 [HKEY_CLASSES_ROOT\*\shell\vim\command]
 @="C:\Dev\Apps\Vim\vim74\gvim.exe" "%1"
+
+
+

@@ -7,16 +7,34 @@ let path='$VIMRUNTIME/../vimfiles/bundle'
 call vundle#begin(path)
 "call vundle#begin()
 
+"   Launch vim and run :PluginInstall
+
+" 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 "Less Syntax Highlighiting
 Bundle 'genoma/vim-less'
+Bundle 'nathanaelkane/vim-indent-guides'
+
 "html5 indent and syntax
 Plugin 'othree/html5.vim'
 Plugin 'elzr/vim-json'
+
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+
+Plugin 'cakebaker/scss-syntax.vim'
+
+
+Bundle 'https://github.com/gorodinskiy/vim-coloresque.git'
+
+Plugin 'pangloss/vim-javascript' "JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
+Bundle 'othree/javascript-libraries-syntax.vim'
+ "Indent Guides is a plugin for visually displaying indent levels in Vim.
+
+Bundle 'scrooloose/nerdtree' 
+
 
 "JS Beutify
 Bundle 'maksimr/vim-jsbeautify'
@@ -43,6 +61,30 @@ filetype indent on
 set cursorline
 
 
+"coming home to vim
+"
+let mapleader = ","
+
+set ignorecase
+set smartcase
+
+set gdefault "Global find replace
+
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+
+"set textwidth=79
+"set formatoptions=qrn1
+"set colorcolumn=85
+
+"Move to close bracket with tab
+nnoremap <tab> %
+vnoremap <tab> %
+
+"Sorts CSS
+"nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR> 
 
 " set complete=.,w,b,t
 " set laststatus=2
@@ -61,6 +103,9 @@ autocmd WinLeave * setlocal nocursorline
   autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
   autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
   autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+
+  "au FileType xml exe ":silent 1,$!tidy -q -i -xml"
 
 " Make sure that unsaved buffers that are to be put in the background are 
 " allowed to go in there (ie. the "must save first" error doesn't come up)
@@ -140,6 +185,9 @@ xnoremap p pgvy
 
 "autocmd VimEnter * NERDTree
 
+
+
+
 "autocmd VimEnter * wincmd p
 
 autocmd BufEnter *.cshtml set filetype=html
@@ -147,6 +195,7 @@ autocmd BufEnter *.aspx set filetype=html
 autocmd BufEnter *.ascx set filetype=html
 autocmd BufEnter *.jsp set filetype=html
 au! BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.scss set filetype=scss.css
 
 color vs2010 "Sets default Color
 "syntax enable
@@ -163,7 +212,7 @@ let g:indent_guides_start_level=2
 let g:vim_markdown_folding_disabled=1
 
 :imap jj <Esc>
-:imap `` <Esc>
+":imap `` <Esc>
 "-----------------------------------------------------------------------------
 " NERD Tree Plugin Settings
 "-----------------------------------------------------------------------------
@@ -181,6 +230,7 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
                    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
                    \ '\.intermediate\.manifest$', '^mt.dep$' ]
+
 
 
 set diffexpr=MyDiff()
@@ -221,6 +271,11 @@ endfunction
 function! Formatjson()
 :%!python -m json.tool
 endfunction
+
+function! DoFormatxml()
+:% !xmllint.exe "%" --format
+endfunction
+command!  Formatxml call DoFormatxml()
 
 augroup json_autocmd
   autocmd!
